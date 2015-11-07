@@ -4,3 +4,4 @@ C:\Users\DMC\Desktop\GitHub\ApeOnAChair\ApeOnAChair\obj\x86\Debug\ResolveAssembl
 C:\Users\DMC\Desktop\GitHub\ApeOnAChair\ApeOnAChair\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\DMC\Desktop\GitHub\ApeOnAChair\ApeOnAChair\obj\x86\Debug\ApeOnAChair.exe
 C:\Users\DMC\Desktop\GitHub\ApeOnAChair\ApeOnAChair\obj\x86\Debug\ApeOnAChair.pdb
+C:\Users\DMC\Desktop\GitHub\ApeOnAChair\ApeOnAChair\bin\x86\Debug\Content\SquareGuy.xnb

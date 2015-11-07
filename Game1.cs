@@ -21,6 +21,10 @@ namespace ApeOnAChair
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        NPC mNpcSprite;//npc sprite
+
+        KeyboardState mPreviousKeyboardState;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -37,6 +41,8 @@ namespace ApeOnAChair
         {
             // TODO: Add your initialization logic here
 
+            mNpcSprite = new NPC();
+
             base.Initialize();
         }
 
@@ -48,6 +54,8 @@ namespace ApeOnAChair
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            //load NPC
+            mNpcSprite.LoadContent(this.Content, "SquareGuy");
 
             // TODO: use this.Content to load your game content here
         }
@@ -68,12 +76,19 @@ namespace ApeOnAChair
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState aCurrentKeyboardState = Keyboard.GetState();
+
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            if (aCurrentKeyboardState.IsKeyDown(Keys.A) == true && mNpcSprite.npcState == NPC.NPCState.Inspecting)
+            {
+                Exit();
+            }
             // TODO: Add your update logic here
-
+            mNpcSprite.Update(gameTime);
+            mPreviousKeyboardState = aCurrentKeyboardState;
             base.Update(gameTime);
         }
 
@@ -86,8 +101,17 @@ namespace ApeOnAChair
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            mNpcSprite.Draw(this.spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public void CheckIfGameOver()
+        {
+            //will check if the game is over
+            //for each nps sprite in list, if position = between points 1 & 2 && user object != facing monitor
+            //change game state to game over
         }
     }
 }
